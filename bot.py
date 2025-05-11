@@ -8,15 +8,15 @@ from pymongo.server_api import ServerApi
 import threading
 from collections import defaultdict
 import time
-from dotenv import dotenv_values
+# from dotenv import dotenv_values
 
 # Enable logging
 logging.basicConfig(format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
-config = dotenv_values(".env")  # Load environment variables from .env file
+# config = dotenv_values(".env")  # Load environment variables from .env file
 
 # MongoDB connection
-uri = config.get("mongodb+srv://lianyang12lol:6kV3rBkncCO5vfGd@cluster0.muowhqe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") # Replace with your MongoDB URI
+uri = "mongodb+srv://lianyang12lol:6kV3rBkncCO5vfGd@cluster0.muowhqe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" # Replace with your MongoDB URI
 
 if not uri:
     print(uri)
@@ -238,7 +238,7 @@ async def cmd_list (update: Update, context: CallbackContext) -> None:
 
 # Function to add command handlers and start bot
 def main():
-    TOKEN = config.get("7620300399:AAGuXPcHhvNp75Tx6rn8uxCZeHiOjSaihCI")  # Replace with your bot token
+    TOKEN = "7620300399:AAGuXPcHhvNp75Tx6rn8uxCZeHiOjSaihCI"  # Replace with your bot token
     
     if not TOKEN:
         print(TOKEN)
