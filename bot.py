@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 config = dotenv_values(".env")  # Load environment variables from .env file
 
 # MongoDB connection
-uri = config.get("YOUR_DB_URL") # Replace with your MongoDB URI
+uri = config.get("mongodb+srv://lianyang12lol:6kV3rBkncCO5vfGd@cluster0.muowhqe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") # Replace with your MongoDB URI
 
 if not uri:
     print(uri)
@@ -238,7 +238,7 @@ async def cmd_list (update: Update, context: CallbackContext) -> None:
 
 # Function to add command handlers and start bot
 def main():
-    TOKEN = config.get("YOUR_BOT_TOKEN")  # Replace with your bot token
+    TOKEN = config.get("7620300399:AAGuXPcHhvNp75Tx6rn8uxCZeHiOjSaihCI")  # Replace with your bot token
     
     if not TOKEN:
         print(TOKEN)
