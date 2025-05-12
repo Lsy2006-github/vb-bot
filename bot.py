@@ -262,7 +262,8 @@ def main():
     # app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_number_of_people))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    logger.info("Bot is running...")
+    PORT = config.get("PORT", 8080)  # Default to 8080 if not set
+    logger.info(f"Bot service starting on port {PORT} (polling mode)")
     app.run_polling()
 
 if __name__ == "__main__":
