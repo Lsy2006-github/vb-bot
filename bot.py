@@ -281,7 +281,7 @@ def main():
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     mock_port_binding(8080)  # or whatever port you want to expose
-    logger.info(f"Bot service starting on port {PORT} (polling mode)")
+    logger.info(f"Bot service starting on port 8080 (polling mode)")
     app.run_polling()
 
 if __name__ == "__main__":
