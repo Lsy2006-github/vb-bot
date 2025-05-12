@@ -9,6 +9,24 @@ import threading
 from collections import defaultdict
 import time
 # from dotenv import dotenv_values
+import socket
+import threading
+
+def mock_port_binding(port):
+    def bind_port():
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.bind(('', port))
+            s.listen(1)
+            print(f"[Mock Port] Bound to port {port} for scanning purposes.")
+            while True:
+                conn, _ = s.accept()
+                conn.close()
+        except Exception as e:
+            print(f"[Mock Port] Error binding to port {port}: {e}")
+
+    t = threading.Thread(target=bind_port, daemon=True)
+    t.start()
 
 # Enable logging
 logging.basicConfig(format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO)
@@ -262,7 +280,7 @@ def main():
     # app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_number_of_people))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    PORT = 8080  # Default to 8080 if not set
+    mock_port_binding(8080)  # or whatever port you want to expose
     logger.info(f"Bot service starting on port {PORT} (polling mode)")
     app.run_polling()
 
